@@ -1,50 +1,109 @@
-=begin 
-input: number 1, number 2, operation type
-output: resulting number from operation
-clarifying questions 
-ask the user for two numbers 
-ask for the type of operation to perform: + - * / 
+require 'yaml'
+MESSAGES = YAML.load_file('calculator_messages.yml')
+puts MESSAGES.inspect
 
-clarifying questions: 
-is the first number the numerator/minuend? 
-what do we do if user inputs 0 as the denomiator
-are we doing just integers or floats as well? 
+def prompt(message)
+  Kernel.puts("=> #{message}")
+end
 
-implicit requirements: 
-numbers must be valid
+def valid_number?(num)
+  num.to_i != 0 # not a great way to validate that the user has input a number
+end
 
-Ask the user for integer 1. 
-Ask the user for integer 2. 
-Ask the user for an operation to perform. 
-Perform the operation on the two numbers
-output the retult
+def operation_to_message(op)
+  case op
+  when '1'
+    'Adding'
+  when '2'
+    'Subtracting'
+  when '3'
+    'Multiplying'
+  when '4'
+    'Dividing'
+  end
+end
 
-Kernel.gets.chomp()
-Kernel.puts()
-=end 
+# we're relying on the case statement being the last expression in the method
+# What if we needed to add some code after the case statement within the method?
 
-Kernel.puts("Welcome to the calculator!")
-Kernel.puts("Please input the first number.")
-num1 = Kernel.gets.chomp
-# Kernel is a module
- 
+prompt("Welcome to the Calculator! Enter your name:")
 
-Kernel.puts("Please input the second number.")
-num2 = Kernel.gets.chomp()
- 
-Kernel.puts("Please select an operator 1) add 2) subtract 3) multiply 4) divide")
-operator = Kernel.gets.chomp()
+name = ''
+loop do
+  name = Kernel.gets().chomp()
 
-if operator == '1'
-  Kernel.puts("The sum of #{num1} and #{num2} is #{num1.to_i + num2.to_i}." )
-elsif operator == '2'
-  Kernel.puts("The difference of #{num1} and #{num2} is #{num1.to_i - num2.to_i}." )
-elsif operator == '3'
-  Kernel.puts("The product of #{num1} and #{num2} is #{num1.to_i * num2.to_i}.") 
-elsif operator == '4'
-  Kernel.puts("The quotient of #{num1} and #{num2} is #{num1.to_f / num2.to_f}.")
-end 
+  if name.empty?()
+    prompt("Make sure to use a valid name.")
+  else
+    break
+  end
+end
+
+prompt("Hi #{name}!")
+
+loop do # main loop
+  number1 = ''
+  loop do
+    prompt("What's the first number?")
+    number1 = Kernel.gets().chomp()
+    #gets returns a string, performs chomp on that string which returns another string
+    #retrieve num from user then perform some check
+    if valid_number?(number1)
+      break
+    else
+      prompt("Hmm... that doesn't look like a valid number.")
+    end
+  end
+
+  number2 = ''
+  loop do
+    prompt("What's the second number?")
+    number2 = Kernel.gets().chomp()
+    if valid_number?(number2)
+      break
+    else 
+      prompt("Hmm... that doesn't look like a valid number.")
+    end
+  end
+
+  operator_prompt = <<-MSG
+  What operation would you like to perform?
+  1) add
+  2) subtract
+  3) multiply
+  4) divide
+  MSG
 
 
- 
+  prompt(operator_prompt)
 
+  operator = ''
+  loop do
+    operator = Kernel.gets().chomp()
+    if %w(1 2 3 4).include?(operator)
+      # if the input from the user is equal to either 1, 2, 3, or 4, it returns as true and breaks out of the loop
+      break
+    else
+      prompt("Must choose 1, 2, 3 or 4")
+    end
+  end
+  prompt("#{operation_to_message(operator)} the two numbers")
+  result = case operator
+           when '1'
+            number1.to_i() + number2.to_i()
+           when '2'
+            number1.to_i() - number2.to_i()
+           when '3'
+            number1.to_i() * number2.to_i()
+           when '4'
+            number1.to_f() / number2.to_f()
+  end
+
+  prompt("The result is #{result}")
+
+  prompt("Do you want to perform another calculation? (Y to calculate again)")
+  answer = Kernel.gets().chomp()
+  break unless answer.downcase().start_with?('y')
+end
+
+prompt("Thank you for using the calculator! Goodbye >.<")
