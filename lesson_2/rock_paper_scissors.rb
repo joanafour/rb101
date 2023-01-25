@@ -5,16 +5,16 @@ def prompt(message)
 end
 
 def display_result(player, cc)
-if (player = 'rock' && cc == 'scissors') ||
+if (player == 'rock' && cc == 'scissors') ||
   (player == 'paper' && cc == 'rock') ||
   (player == 'scissors' && cc == 'paper')
 prompt("You won!")
-elsif (player = 'scissors' && cc == 'rock') ||
+elsif (player == 'scissors' && cc == 'rock') ||
     (player == 'rock' && cc == 'paper') ||
     (player == 'paper' && cc == 'scissors')
-prompt("Computer won!")
+    prompt("Computer won!")
 else
-prompt("It's a tie!")
+  prompt("It's a tie!")
 end
 end
 
