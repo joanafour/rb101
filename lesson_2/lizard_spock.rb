@@ -15,6 +15,7 @@ def win?(first, second)
     (first == 'spock' && second == 'rock')
 end
 
+
 def display_result(player, computer)
   if win?(player, computer)
     prompt('You won!')
@@ -24,6 +25,9 @@ def display_result(player, computer)
     prompt("It's a tie!")
   end
 end
+
+def grand_winner?(player, computer)
+  
 
 loop do
   choice = ''
@@ -46,5 +50,6 @@ loop do
   answer = Kernel.gets().chomp()
   break unless answer.downcase().start_with?('y')
 end
+
 
 prompt("Thank you for playing. Goodbye gremlin.")
