@@ -35,7 +35,7 @@ puts "one is: #{one}"
 puts "two is: #{two}"
 puts "three is: #{three}"
 
-# 3. 
+# 3.
 def mess_with_vars(one, two, three)
   one.gsub!("one","two")
   two.gsub!("two","three")
