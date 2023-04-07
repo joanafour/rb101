@@ -1,6 +1,15 @@
-def reversed_number(num)
-  num.to_s.reverse!
-  num.to_i 
-end
+print "Enter a noun: "
+noun = gets.chomp
 
-reversed_number(12345)
+print "Enter a verb: "
+verb = gets.chomp
+
+print "Enter an adjective: "
+adj = gets.chomp
+
+print "Enter an adverb: "
+adverb = gets.chomp
+
+puts "Do you #{noun} your #{adj} #{verb} #{adverb}? That's hilarious!"
+
+

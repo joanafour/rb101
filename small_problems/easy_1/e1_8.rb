@@ -1,13 +1,6 @@
-def center_of(string)
-  if string.size.odd?
-  index = string.size / 2
-  string.slice(index)
-  else
-  index = string.size / 2 - 1
-  second_index = string.size / 2
-  string.slice(index..second_index)
-end
+def reversed_number(num)
+  num.to_s.reverse!
+  num.to_i 
 end
 
-center_of('I love ruby')
-center_of('Launch')
+reversed_number(12345)
