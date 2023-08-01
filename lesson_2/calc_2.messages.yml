@@ -1,0 +1,10 @@
+require 'yaml'
+MESSAGES = YAML.load_file('calculator_messages.yml')
+
+en:
+welcome: "Welcome to Calculator! Enter your name"
+valid_name: "Make sure ot enter a vailid name."
+es:
+welcome: "Bienvenido a la calculadora! Entre su nombre:"
+valid_name: "Asegurese de entrar un nombre valido"
+
