@@ -5,6 +5,7 @@ end
 
 def win?(first, second)
   (first == 'rock' && second == 'scissors') ||
+    (first == 'rock' && second == "spock")
     (first == 'paper' && second == 'rock') ||
     (first == 'scissors' && second == 'paper') ||
     (first == 'lizard' && second == 'spock') ||
@@ -27,7 +28,7 @@ def display_result(player, computer)
 end
 
 def grand_winner?(player, computer)
-  
+
 
 loop do
   choice = ''
