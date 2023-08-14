@@ -80,3 +80,4 @@ loop do # outside loop
   answer = gets().chomp()
   break unless answer.downcase.start_with?('y')
 end
+
