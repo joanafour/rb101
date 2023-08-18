@@ -98,7 +98,7 @@ title.center(40)
 y = "The Flintstones Rock!"
 
 x = 1
-while x < 10
+until x > 10
   puts y
   y.prepend " "
   x += 1
@@ -106,7 +106,19 @@ end
 1
 #2.
 
-puts "the value of 40 + 2 is " + (40 + 2)
+puts "the value of 40 + 2 is " + (40 + 2).to_s
 # trying to use string concatenation with an integer
 # could use string interpolation instead "the value of 40 + 2 is #{40 + 2}."
-# the 
+# could convert integer to string and concat that way
+
+#3.
+def factors(number)
+  divisor = number
+  factors = []
+  begin
+    factors << number / divisor if number % divisor == 0
+    divisor -= 1
+  end until divisor == 0
+  factors
+end
+
