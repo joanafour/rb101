@@ -95,6 +95,7 @@ statement.count 't'
 title = "Flintstone Family Members"
 title.center(40)
 
+#1
 y = "The Flintstones Rock!"
 
 x = 1
@@ -103,7 +104,7 @@ until x > 10
   y.prepend " "
   x += 1
 end
-1
+
 #2.
 
 puts "the value of 40 + 2 is " + (40 + 2).to_s
