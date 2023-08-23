@@ -141,7 +141,7 @@ method def output?
 
 
 
-#
+#6
 arr = [1, 2, 3, 4]
 
 counter = 0
@@ -155,9 +155,32 @@ end
 
 puts "Your total is #{sum}"
 
-# a really convoluted way to have counter and sum point to a value, do they point to the same object?
+# Local variable arr is initialized and is pointing to an array object with value [1234]
+Local variables counter and sum are initialized and both point to the same object since every number
+holds a reference to an object that doesn't change/is immutable
+
+the loop method is called and a block is caled in using do end
+
+sum uses additon assignment and arr calls setter method, where we reference are able to reference every element in the array that arr points to by index number
+which is representd by counter which is reassigned a number on the following line by using addition assignment counter = conter + 1
+counter is used to access initially index zero up until index up until the last index, index 3
+it then breaks out of the loop since after using a conditional if statement with the is equal to operator
+as counter is reassigned to 4 (no index 4)
+and the size method called on the arr returns the number of elements  in the array
+
+#7
+a = 'Bob'
+
+5.times do |x|
+  a = 'Bill'
+end
+
+p a
+
+The object (that the literal integer 5?) is pointing to calls on te method
+
+The integer calls the block 5 times with each integer value from 0-4
 
 
-
-
+The method returns the object that calls on the method, in this case 5 (integers are immutable so it returns 5)
 =end
