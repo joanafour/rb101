@@ -123,13 +123,7 @@ puts "A #{adjective} #{noun} #{verb} #{adverb} with another #{noun}! That is som
 =end
 
 
-def reversed_number(number)
-  a = number.digits
-  loop do
-  a.delete_if{|foxes| a.to_s.start_with?("0")}
-  break if a.start_with?(!"0")
-  end
-  puts a
-end
 
-reversed_number(01234)
+
+
+ 
