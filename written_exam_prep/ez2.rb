@@ -36,7 +36,7 @@ puts "It's #{Time.new.year}. You will retire in #{retirement_year}. You only hav
 puts "what is your name?"
 name = gets.chomp
 if name.end_with?("!")
-  puts "HELLO #{name.upcase}. WHY ARE WE SCREAMING?"
+  puts "HELLO #{name.upcase.chop}. WHY ARE WE SCREAMING?"
 else
   puts "Hello #{name}."
 end
