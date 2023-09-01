@@ -220,7 +220,7 @@ b = 2
 end
 
 puts a
-put b
+puts b
 
 =begin
 Outerscope local variable a is initalized and references an object with value 4
@@ -229,5 +229,123 @@ The times method is called on the object that is pointed to by the literal 2
 a is assigned to the blocks parameter and now there are 2 local variable in the ineer scope with the same name
 this prevents access to the outer scope local variable
 so that on the next line the block parameter a is initialized to 5 rather than the outerscope a being reassigned from 4 to 5
-the next line calls on the puts method to output a and since we have called the times method on the block itself 
+the next line calls on the puts method to output a which is a, since the times method calls the given block 2 tiems with each integer
+in 0-1,the value of a, or 5, is output twice
+  5
+  5
+times method returns self, that is the object that called on it, mutated or not in this case 2 (it's an integer can't be mutated)
+
+since the a in the ineerscope is initalized in the inner scope, the outer scope can't touch it
+so puts a outputs 4 since it can only access the outerscope a
+and puts b just outputs 2
+both return nil since it's calling on the puts method
+
+this example demonstrates variable shadowing and block scope,
+inner scope variable a is shadowed by outerscope variable b
+and variables initialized within a block cannot be accessed outside of the block
+=end
+
+n = 10
+
+1.times do |n|
+  n = 11
+end
+
+puts n
+
+=begin
+local variable n is initalized and references a number object with value 1
+
+the times method is called on literal 1 pointing to object with value 1
+block denoted by do end is passed into times method
+  block parameter is denoted also by variable n
+  block parameter n is used on the next line, as opposed to outerscope variable n, and is initalized so that it points to object with value 1
+  object that outerscope variable n points to with value is calls on the puts method and returns nil, n inside block and n outside
+  block are two different variables and since the n initalized within the block cannot be accessed due to block scope and it being a local
+  variable the n initialized on the outerscope is what is used
+=end
+
+animal = "dog"
+
+loop do |animal|
+  animal = "cat"
+  break
+end
+
+puts animal
+
+=begin
+local variable animal is initalized so that it references string object with value "dog"
+multi-line block is passed to loop method where parameter with variable name animal is defined since parameter animal and variable
+animal have same name block uses parameter animal and initialized animaal to cat
+break keyword is used to break out of the loop
+
+otuerscope variable animal is calls on puts method bc paramter with var name animal is initialized within the block and cannot be accessed by
+outerscope
+=end
+
+
+
+a = "hi there"
+b = a
+a = "not here"
+
+=begin
+local variable a is initalized and points to string object with value "hi there"
+local variable b is initalized nad set equal to a, both variables are now pointign to same string object with value "hi there"
+a is reassigned to stirng ojbect with value "not there", a remains pointing to other object because reassignment changes where pointer points to
+and not actual object o
+a returns not here
+and b returns hi there
+the concept it demonstrates is variables as pointers
+=end
+
+
+a = "hi there"
+b = a
+a << ", Bob"
+
+=begin
+local variable a points to string object with value "hi there"
+local variable b initialized and set equal to what variable a and now points to the same object that a points to
+mutating append method is called on object pointed to by variable a "hi there" so that object mutates to
+hi there, bob
+since the object itself was changed the vriable a and b which were in the first place both pointed to that object now
+point to mutated string object with value "hi there, bob"
+
+this demonstrates the concept of mutating methods and object mutation
+=end
+
+a = [1, 2, 3, 3]
+b = a
+c = a.uniq
+
+=begin
+local variable a points to the array object with value [1,2, 3, 3]
+b is set as being equal to b so now it points to that same array object
+c is set as being equal to what is a is when the uniq method is called on it, which traverses through the
+array and delteres ay repeatign values so that c is assigned to array object with value [1,2,3]
+this uniq method is distinguishable from the uniq! method in that it is not mutating
+
+this show the concept of initializing a variable to the value returned when a non mutating method is called another variable
+=end
+
+def test(b)
+  b.map {|letter| "I like the letter: #{letter}"}
+end
+
+a = ['a', 'b', 'c']
+test(a)
+
+=begin
+method is defined with variable b for the paramter
+the map method is calls om b
+,ap returns a new array with what it executes in the block 
+
+local variable a is initalized and points to array object with value ['a', 'b', 'c']
+test(a) returns a vaule of ["I like the letter a", I like the letter b, I like the letter c"]
+a is passed in as an argument to the mehod definition and is assigned to mehtod s parameter
+
+
+
 =end
