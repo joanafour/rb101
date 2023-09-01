@@ -177,10 +177,57 @@ end
 
 p a
 
-The object (that the literal integer 5?) is pointing to calls on te method
+The literal 5's object (that holds the number 5) calls on the method.
 
-The integer calls the block 5 times with each integer value from 0-4
+Returnms all the numbers from zero to one less than the number itself. It iterates the given block, passing in increasing
+values from 0 up to the limit.
+If no block si given, an Enumerator is returned instead
 
 
 The method returns the object that calls on the method, in this case 5 (integers are immutable so it returns 5)
+=end
+
+
+animal = "dog"
+loop do |_|
+  animal = "cat"
+  var = "ball"
+  break
+end
+
+puts animal
+puts var
+
+
+=begin
+The variable animal is intialized and points to the string object with value "dog"
+THe loop method is invoked and a block is passed into the method, block does have a parameter that it does  not use in the block
+nil is returned (WHY?)
+
+
+reassigns var animal to a different object with value "cat"; variable var is initialized within the block and therefore cannot be accessed by the
+outerscope
+so puts animal outputs cat and put var will return a error that says that the variable is undefined
+
+=end
+
+a = 4
+b = 2
+
+2.times do |a|
+  a = 5
+  puts a
+end
+
+puts a
+put b
+
+=begin
+Outerscope local variable a is initalized and references an object with value 4
+Outerscope local varaible b is initalized and references an object with value 2
+The times method is called on the object that is pointed to by the literal 2
+a is assigned to the blocks parameter and now there are 2 local variable in the ineer scope with the same name
+this prevents access to the outer scope local variable
+so that on the next line the block parameter a is initialized to 5 rather than the outerscope a being reassigned from 4 to 5
+the next line calls on the puts method to output a and since we have called the times method on the block itself 
 =end
