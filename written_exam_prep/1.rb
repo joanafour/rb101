@@ -340,12 +340,151 @@ test(a)
 =begin
 method is defined with variable b for the paramter
 the map method is calls om b
-,ap returns a new array with what it executes in the block 
+,ap returns a new array with what it executes in the block
 
 local variable a is initalized and points to array object with value ['a', 'b', 'c']
 test(a) returns a vaule of ["I like the letter a", I like the letter b, I like the letter c"]
-a is passed in as an argument to the mehod definition and is assigned to mehtod s parameter
+a is passed in as an argument to the mehod definition and is assigned to method's parameter
+map executes the block for each element of the array, represented by parameter letter and
+returns a new array whose values are the return values of each iteration of the block where
+each element of the array is interpolated to return "I like the leter a, I like the letter b I like the
+letter c "
+THis demonstrates passing an array to the the map methdo
+=end
+
+a = 5.2
+b = 7.3
+
+a = b
+
+b += 1.1
+
+=begin
+local var a is initialized to point to float object with value 5.2
+local var b is initialized to point to float object with value 7.3
+
+a is set a being equal to b so now both a and b point to object with value 7.3
+b is reassigned with addition reasignement to 8.4
+since numbers are immutable in ruby it is not that the object b points to is mutated
+rather it points to a new object with value 8.4
+a's pointer still points to object with value 7.3
+
+This shows variable reassignment on an immutable object.
+
+=end
+
+def test(str)
+  str  += '!'
+  str.downcase!
+end
+
+test_str = 'Written Assessment'
+test(test_str)
+
+puts test_str
 
 
+
+=begin
+Method definition test is written with parameter str
+str uses addition reassignment to add ! to str
+stri then uses mutating downcase emthod to change all uppercase letters into lower care
+
+local variable test_string is initialized so that it points to string object with value "Written Assessment"
+this object calls on the test method and test_str is passed as an argument
+The return value of this method is on test_str is 'written assessment!'
+
+object pointed to by test_str then calls on the puts method where it outputs
+'Written Assessment' since when it passed to the method
+since ruby is pass by reference value and passes a copy of the reference of the orginal object to the method
+since it is only a copy and not the original binding, the original binding can't be changed
+
+and since the first thing the method def does with the argument passed in is change the reference to point to a different
+object that will not be reflected in original object since the binding of the orginal arguments can't be changed
+
+str is first reassigned and points to a different object and the
+mutating downcase method is called on this reassigned object not the actual object so the
+value of the original object that test_str points to is unchanged
+
+this shows the concept of  pass by reference value
+=end
+
+
+
+def plus(x, y)
+  x = x + y
+end
+
+a = 3
+b = plus(a, 2)
+
+puts a
+puts b
+
+=begin
+
+
+local variable a is initialized and references number object with value three
+b is initialized to the return value of variable and integer literal referencing number object with value 2
+
+puts a outputs 3 and returns nil
+puts  b putputs 5 and returns nil
+
+method definition passes in two arguments assigned to parameters (variables) x and y
+x is set equal to reference the object with the value of x + y
+
+when arguments a and 2 are passed in the value that a references gets reassingned in the method
+
+  a  = 3 + 2
+
+
+=end
+
+def increment(x)
+  x << 'b'
+end
+
+y = 'a'
+increment(y)
+
+puts y
+
+=begin
+
+the method example is defined and takes 1 parameter
+local var x is initalized by calling on the append method
+the append method appends string b to x
+
+
+local variable y is initalized and references string object with value a
+on the next line y is passed in as an argument to the method increment
+where the object that points to y is mutated to have value 'ab'
+calling on the method retrurns this value
+and calling the puts method on y outputs the value and returns nil
+
+this demonstrates how mutating methods work
+=end
+
+
+def change_name(name)
+  name = 'bob'      # does this reassignment change the object outside the method?
+end
+
+name = 'jim'
+change_name(name)
+puts name
+
+
+=begin
+
+change_name method is defined with one parameter name
+local variable name is initialized and references string object with value 'bob'
+
+in the outerscope local variable name is initialzied and references string object with value jim
+change_name method is called with argument name a and returns 'bob'
+put name output 'jim' since reassigned and does not change the object outside the nmethod since ruby is pass by reference
+value - reassigning where the copy of a reference points (changing the copy of the reference, does not change the reference itself)
+
+to does not actually reassign the reference itself****
 
 =end
