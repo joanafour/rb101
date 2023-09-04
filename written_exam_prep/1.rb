@@ -483,8 +483,190 @@ local variable name is initialized and references string object with value 'bob'
 in the outerscope local variable name is initialzied and references string object with value jim
 change_name method is called with argument name a and returns 'bob'
 put name output 'jim' since reassigned and does not change the object outside the nmethod since ruby is pass by reference
-value - reassigning where the copy of a reference points (changing the copy of the reference, does not change the reference itself)
-
-to does not actually reassign the reference itself****
+value - reassigning where the copy of a reference points (changing the copy of the reference, does not change the reference itself
+does not actually reassign the reference itself****
 
 =end
+
+def cap(str)
+  str.capitalize!   # does this affect the object outside the method?
+end
+
+name = "jim"
+cap(name)
+puts name
+
+=begin
+method cap is defined with one parameter
+local variable str is initialzied and calls on the capitalize! mehtod
+
+local variable name is initialized and points to string object with value "jim"
+name is passed in as an argument when it called on the cap method
+JIM is returned
+since the cap method uses a mutating method within its body on a mutable object
+when name calls on the puts method the output is JIM and returns nil bc
+now name points to JIM
+
+
+=end
+
+
+a = [1, 3]
+b = [2]
+arr = [a, b]
+arr
+
+a[1] = 5
+arr
+
+
+=begin
+local variable a is initialized and references array object with value [1,3]
+local variable b is initialzied and references array object with value [2]
+local variable arr is initlailzied and references an array with arrays a & b so an array of arrays  and returns [[1, 3], [2]]
+
+a[1] = 5; reassigns index on (that is value 3) on the array a; while indexed assignment reassigns which object
+values point to within the array the array itself is mutated so arr returns [[1, 5], [2]]
+
+=end
+
+
+arr1 = ["a", "b", "c"]
+arr2 = arr1.dup
+arr2.map! do |char|
+  char.upcase
+end
+
+puts arr1
+puts arr2
+
+=begin
+local variable arr1 is initialzied and points to an array object with 3 elements contained in an array ['a', 'b', 'c']
+local variable arr2 is initialzied and points a different
+array object that is referenced when the dup method is called on, arr1 is passed in as the argument
+the map! method is called on with arr2 passed in as the argument and a the do end block passed in as an
+argument, having one parameter
+local variable char is initalized and calls on the upcase method
+this returns A B C
+
+when arr1 calls on the puts method it outputs a b c
+when arr2 calls on the puts metod it outputs A B C
+  this is because the map! method method in this instance executes the given
+  block for each element of the array and returns self with the retuns values of each iteration of the block
+in this case it returns the upcased valeus of a b and c and returns a mutated self with values A B C
+=end
+
+
+def fix(value)
+  value.upcase!
+  value.concat('!')
+  value
+end
+
+s = 'hello'
+t = fix(s)
+
+
+=begin
+fix method is defined with one parameter
+local variable value is initialized and calls on the upcase! method whe n stirng literal '!' is
+also passed in as an argument
+the method definition returns the value of value on the last lne
+
+outside the mehtod local variable s is initalized and references a string object with value 'hello'
+local variable t is initialized and points to the object that is referenced when
+s is passed in as an argument to the fix method
+in this case t = "HELLO!" the retun value; and since both upcase and concat mutates the the oject that is pointed to by s
+S AND T NOW REFERNECE THE SAME OBJECT
+
+=end
+
+def fix(value)
+  value = value.upcase
+  value.concat('!')
+end
+
+s = 'hello'
+fix(s)
+s
+
+=begin
+fix method is defined with one parameter
+value is initialized and references (a different) object that is pointed at when the upcase method is called on value
+value calls on the concat method and passed in stirng literal '!' as argument
+
+outside the method definition local variable s is initialzed and reference a string object with value 'hello'
+since ruby is pass by reference value only a copy of the reference to 'hello' is passed in
+so when on the second line of the method definition value is reassigned to a different object - where value acalls on the
+non-mutating method upcase; thereby reassigning it to a different object
+since the actual reference is not being reassingned but a copy of that reference, it has no effect on the original object
+and anything thereafter, in this case the mutatating concat method also references whatever object reassignment has told it to
+(not the original object)
+thereby returning 'hello'
+
+=end
+
+
+def fix(value)
+  value << 'xyz'
+  value = value.upcase
+  value.concat('!')
+end
+
+s = 'hello'
+t = fix(s)
+
+
+=begin
+method fix is defined with one parameter
+local variable value is initalized and calls on the append method to append another argument string literal 'xyz'
+value is reassigned to object that is pointed to when value calls on the upcase argumetn
+value calls on the concat method and '!' is passed in as an argument as well
+
+outside the method local variable s is initalized and references string object with value 'hello'
+t is initialized to return value when the fix method is called with argument s
+s and t reference different object since on the third line of the fix definition value references a different object
+=end
+
+def fix(value)
+  value = value.upcase!
+  value.concat('!')
+end
+
+s = 'hello'
+t = fix(s)
+
+=begin
+method fix is defiend and passes in aone aparameter
+local varialbe value is initialized and referneces the return value of value calling on the upcase! method
+since the upcase method, the originial object and referenced by value and the object referenced by value.upcase!
+are one in the same
+vlaue calls on the concat method and stirng literal '!' is also passed in as an argument
+
+outside the method lcoal variable s is initalized and references stirng object with value 'hello'
+t references the return value of the fix method with s passed in as the argument "HELLO!"
+s and t reference the same object object and after the last line if s were to be called on again it would retun the mutated
+'HELLO!' since hte object has now called on the method
+=end
+
+
+def fix(value)
+  value[1] = 'x'
+  value
+ end
+
+ s = 'abc'
+ t = fix(s)
+
+=begin
+method fix is defined and passes in one paramter
+value is initalized and uses index assignment to assign the value of index 1 of value to 'x'
+last line returns value
+
+local variable s is initalized and reference string object with value 'abc'
+local variable references the returns method when s is passed in as an arugment to the fix method which in this case is 'axc'
+index assignment is mutating so both variables reference reference the same mutated object from that point on 
+
+
+
+-end
