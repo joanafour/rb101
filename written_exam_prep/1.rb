@@ -665,7 +665,7 @@ last line returns value
 
 local variable s is initalized and reference string object with value 'abc'
 local variable references the returns method when s is passed in as an arugment to the fix method which in this case is 'axc'
-index assignment is mutating so both variables reference reference the same mutated object from that point on 
+index assignment is mutating so both variables reference reference the same mutated object from that point on
 
 
 

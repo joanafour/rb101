@@ -24,4 +24,21 @@ puts a.fetch(7) { |index| index**2 }
 # a b c d e nil nil beats me
 # raises another error or moves string object beats me over to index 49
 
-5.step(to: 10, by: 3) {|value| puts value}
+5.step(to: 11, by: 3) {|value| puts value}
+=begin
+5
+8
+=end
+
+s = 'abc'
+puts s.public_methods(false).inspect
+
+
+
+#if all is false, #public_methods limits the output to just those methods in the object that called #public_methods; for our purposes, this means just the methods defined directly in the String class.
+
+# If the all parameter is set to false, only those methods in the receiver will be listed.
+
+
+a = [5, 9, 3, 11]
+puts a.min
