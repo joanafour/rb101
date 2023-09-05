@@ -48,17 +48,20 @@ p multisum(1000)
 
 def running_total(arr)
   arr.map do |e|
-    if e == e[0]
+    counter = 0
+    if e == arr[0]
       e
     else
-     e += arr[e - 1]
-    end
-  end
+     e += arr[0 + counter] # 8 + arr[1] (6)
+     counter += 1
+     e
+     end
+   end
 end
 
 
-p running_total[1,2,3]
-running_total([2, 5, 13]) == [2, 7, 20]
-running_total([14, 11, 7, 15, 20]) == [14, 25, 32, 47, 67]
-running_total([3]) == [3]
-running_total([]) == []
+p running_total([4,6,8])
+p running_total([2, 5, 13]) == [2, 7, 20]
+p running_total([14, 11, 7, 15, 20]) == [14, 25, 32, 47, 67]
+p running_total([3]) == [3]
+p running_total([]) == []

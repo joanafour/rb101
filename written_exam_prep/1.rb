@@ -663,10 +663,166 @@ method fix is defined and passes in one paramter
 value is initalized and uses index assignment to assign the value of index 1 of value to 'x'
 last line returns value
 
-local variable s is initalized and reference string object with value 'abc'
-local variable references the returns method when s is passed in as an arugment to the fix method which in this case is 'axc'
-index assignment is mutating so both variables reference reference the same mutated object from that point on
+local variable s is initalized and references string object with value 'abc'
+local variable t references the return value when s is passed in as an argument to the fix method which in this case is 'axc'
+index assignment is mutating so both variables reference reference the same mutated object from the last line on
+=end
 
 
+def a_method(string)
+  string << ' world'
+end
 
--end
+a = 'hello'
+a_method(a)
+
+p a
+
+
+=begin
+method a_method is defined with one paramter
+local variable string is initializied and is uses the append method to append the string ' word'
+
+in the outerscope local variable a is initialized and references stirng object with value 'hello'
+a_method is called on and a is passed in as an argument, returns 'hello world'
+since the object that is referenced by a is mutated when the append method (mutating) is called on it
+when p is called on by a, p displays (returns) 'hello world'
+
+
+=end
+
+
+num = 3
+
+num = 2 * num
+=begin
+=end
+
+a = %w(a b c)
+a[1] = '-'
+p a
+
+
+=begin
+local variable a is initialized and references array object with value ["a", "b", "c"]
+a uses index assignment to reassign the value at index 1 from b to -
+a calls on the p method and outputs/returns a - c
+=end
+
+def add_name(arr, name)
+  arr = arr + [name]
+end
+
+names = ['bob', 'kim']
+add_name(names, 'jim')
+puts names
+
+=begin
+method add_name is defined with two parameters
+local variable arr is initialized and is set equal to arr concactenated with name
+
+outside the method local variable names is initialized and references array object with value ["bob", "kim"]
+we call on the add_name method and pass in names and string literal 'jim'; array ["bob", "kim", "jim"] is returned
+we call on the puts method and pass in argument names which outputs ['bob', 'kim']
+when the array gets passed into the method  it is reassigned, therefore the object itself is not mutated and since ruby is pass by reference copy
+changes to made to names' reference, via reassignment, is not possible
+when we call the puts method
+=end
+
+array = [1, 2, 3, 4, 5]
+
+array.select do |num|
+   puts num if num.odd?
+end
+
+=begin
+
+local variable array is initialized and references an array object with value [1,2,3,4,5]
+array calls on the select method; a block denoted by do end is passed in as an argument
+  the select method travereses through each number in the array and the puts method is invoked on num
+  on the condition that the number is odd
+  outputs
+  1
+  3
+  5
+  and a new empty array is returned since the block does not returns any true values only nil from the puts method
+array still references [1,2,3,4,5]
+
+This demonstrates calling on a non-destructive method
+=end
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+arr.select { |n| n.odd? }
+
+=begin
+local variable array is initialzied and points to array [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+array calls on the select method and a block denoted by {} is passed in as an argument
+the select method travereses through each element in the array dneoted by the parameter(/local variable?) n
+the array returning a new array if the conitions within the block
+return true, in this case it returns [1,3,5,7,9] and outputs nothing
+=end
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+new_array = arr.select do |n|
+  n + 1
+end
+p new_array
+
+=begin
+=end
+
+
+words = %w(jump trip laugh run talk)
+
+new_array = words.map do |word|
+  word.start_with?("t")
+end
+
+p new_array
+
+=begin
+local variable words is initialized and references array object with value ["jump", "trip", "laught", "run", "talk"]
+local variable new_array is iniitalized and references the array object returned when
+words calls on the map method and a block as denoted by do...end is passed in as in as an argument
+  which is where we iterate through the array elements to check which elements start with a t
+  a new array is returned based on the return values (t/f) for each iteration of the block
+  [false, true, false, false, true]
+p new_array outputs and returns this array
+
+=end
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+arr.each { |n| puts n }
+
+
+=begin
+local variable arr is initialized and reference array object with value [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+arr call on the each method where a block as denoted by {} is passed in as an argument
+within the block we call the puts method and pass in each element of the block
+which is output
+and the orginal array itself is returned since nothing destructive has happened to the array within the block
+
+=end
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+incremented = arr.map do |n|
+            n + 1
+            end
+p incremented
+
+=begin
+local variable arr is initialized and points to arr object with
+value [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+local variable incremented is initialized and points to the
+object that contains the return value when
+the arr calls on the map method and passed in as an argument
+block denoted by do...end is also passed in as argument ot the method
+within the method 
+
+=end
