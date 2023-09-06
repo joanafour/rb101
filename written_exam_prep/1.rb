@@ -822,7 +822,81 @@ value [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 local variable incremented is initialized and points to the
 object that contains the return value when
 the arr calls on the map method and passed in as an argument
-block denoted by do...end is also passed in as argument ot the method
-within the method 
+block denoted by do...end is also passed in as argument to the method
+where each element the array is traversed through; element is denoted
+by n in the block parameter and local variable n is uses addition (n + 1) to
+and returns a new array w/ a different obj id
+the points to an arr with values [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+p incremented outputs and returns this value
+
+=end
+# HOW TO WRITE THAT WE ARE USING THE PARAMETER VARIABLE
+# So on line 5 we are actually assigning integer 5 to the local variable a passed in as a parameter of the do..end block a
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+new_array = arr.map do |n|
+  n > 1
+end
+p new_array
+
+=begin
+local var arr is initialized and points to array object with value [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+local var new_array is initialized and points to the object that is referened when
+map method is called on by arr and a block denoted by do..end is also passed in as
+  an argument; the block has one parameter which
+  on the next line is uses the > operand  sign to return  an array
+  withs evaluated result of the statement (true/false)
+arr continues to point to its orginal value/object [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+while new_array points to the new array returned by map method
+=end
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+new_array = arr.map do |n|
+  n > 1
+  puts n
+end
+p new_array
+
+=begin
+local variable arr is initialized and refereces array object with value [1,2,3,4,5,6,7,8,9,10]
+local variable new_array is initialzied and references the same object referenced
+when the map method is call on arr and the ;
+block is passed into the method as an argument. Block is defined with one parameter n
+local variable n which we passed in as a parameter is written with comparison operater
+n calls on the puts method
+the outputs each element and returns an array of [nil,nil,nil,nil,nil,nil.nil...] since the
+it is the last expression in the block and each returns an array of the return values of said expression
+and since puts will always return nil we are left with an array of nils
+new_array calls on the p method with outputs and returns this
+
+=end
+
+
+
+
+a = "hello"
+
+[1, 2, 3].map { |num| a }
+
+=begin
+local variable a is initialized and references string object with value "hello"
+array literater [1,2,3] calls on the map method and a block is also passed in as an argument as denoted by {}
+the block is defined with one parameter num
+since variables initialized in the outerscope (outside block) can be referenced within the block
+the array is traversed through element by element so three times and each time it returns the value of a
+so a new array ["hello", "hello", "hello"] is returned
+=end
+
+[1, 2, 3].each do |num|
+  puts num
+end
+
+=begin
+array literal is passed to each method as an argument; block is also passed in as an arugment and is defined with
+one parameter
+local variable num which was assigned to parameter calls on the puts method 1 2 3 is output and array 123 is 
 
 =end

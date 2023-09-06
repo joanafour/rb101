@@ -133,7 +133,7 @@ p palindromic_number?(22) == true
 p palindromic_number?(5) == true
 =end
 
-
-def uppercase?(string)
-  string == string.upcase
+def real_palindrome?(string)
+  string = string.downcase.delete('^a-z0-9')
+  string == string.reverse
 end
