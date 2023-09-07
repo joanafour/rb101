@@ -740,7 +740,8 @@ end
 local variable array is initialized and references an array object with value [1,2,3,4,5]
 array calls on the select method; a block denoted by do end is passed in as an argument
   the select method travereses through each number in the array and the puts method is invoked on num
-  on the condition that the number is odd
+  on the condition that true is odd;
+  so the self method considers if the return value of num.odd? evaluates to true or not.
   outputs
   1
   3
@@ -897,6 +898,97 @@ end
 =begin
 array literal is passed to each method as an argument; block is also passed in as an arugment and is defined with
 one parameter
-local variable num which was assigned to parameter calls on the puts method 1 2 3 is output and array 123 is 
+local variable num which was assigned to parameter calls on the puts method 1 2 3 is output and array 123
+returns object passed in, the original array unchanged
+=end
+
+[1, 2, 3].any? do |num|
+  num > 2
+end
+
+=begin
+array literal [1,2,3] is passed as an argument to the any? method
+block is passed into the method as an argument with one parameter
+since one of the elements in the array 3 meets the criteria that
+it is greater than true, true is returned
 
 =end
+
+{ a: "ant", b: "bear", c: "cat" }.any? do |key, value|
+  value.size > 4
+end
+
+=begin
+hash { a: "ant", b: "bear", c: "cat" } is passed into the any? method
+as an argument as is the block denoted by do..end which take two
+parameters
+local variable value passed in as a parameter and calls on the size method
+which returns the count of characters of the string values in the hashes
+assigned to value (ant bear cat)
+since none of the vales in the hash have strings with a larger character size
+than 4 false is returned
+=end
+
+[1, 2, 3].all? do |num|
+  num > 2
+end
+
+=begin
+array literal is passed to the all? method as an argument and so
+is the block denoted by do...end which is defined with one parameter
+local var num, passed in as the parameter, and evaluate whether num
+or each element of the array that gets passed in larger than 2 using the
+> comparison operator and return a boolean value
+in this case false is returned
+=end
+
+{ a: "ant", b: "bear", c: "cat" }.all? do |key, value|
+  value.length >= 3
+end
+
+=begin
+hash literal is passed to the all? method as an argument
+a block denoted by do..end is passed to the method as an argument
+  and defined with two parameters
+  local variable value passed in as a parameter calls on the length method
+  so when the ollege is iterated through
+  each value in the hash key-value pairs is evaluated to using the comparison ooperator
+  >= to determine whether all of the values have a length greater than or equal to 3
+in this case they all do and true is returned
+=end
+
+a.each_with_index do |num, index|
+  puts "The index of #{num} is #{index}."
+end
+
+=begin
+array literal [1,2,3] is passed to the each_wirh_index method as an argument
+block denoted by do..end is passed in as an argument to hte method and is defined with two parameters
+iterates through the elements of the array and the indices of those elemetns
+string "The index of #{num} is #{index}. calls on and pass as an argument to the puts method
+the array that a passed in is retured
+The index of #{num} is #{index}. is output num representing each
+
+=end
+
+a = "Hello"
+
+if a
+  puts "Hello is truthy"
+else
+  puts "Hello is falsey"
+end
+
+=begin
+local varialbe a is initialized and refernece stirng object with value "hello"
+
+if/statement is written so that if a evaluates to true
+  the string literal "Hello is truthy" calls on and is passed to the puts method as an argument if a
+  evaluates to true
+  if a doesn't evalute to true the puts method is inovked on the string literal hello this is falsey
+
+everything in ruby evaluates to true or is truthy except for nil and false;
+and while a does not equal true but it  evaluates to true in the conditional
+
+=end
+
