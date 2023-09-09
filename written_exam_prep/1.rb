@@ -990,5 +990,44 @@ if/statement is written so that if a evaluates to true
 everything in ruby evaluates to true or is truthy except for nil and false;
 and while a does not equal true but it  evaluates to true in the conditional
 
+#gets method will pause the program and wait for the users input
+#excuution stops when it gets to gets wait for the user ot input smthing
+# hit the enter key and then the program will
+
+
+
+
+
+=begin
+Line 1: local variable greeting is initialized and refeerences string
+object with value 'Hello'
+
+line 3: loop method is invoked and a block is passed in as an argument
+to it, as denoted by do..end
+line 4: greeting is reassigned inside the block and
+now references string object with value 'Hi'; since variables in the outerscope
+of the block can be accessed within the block ruby uses outerscope greeting variable and
+reassigns it
+line 5: break keyword breaks out of the loop
+line 8: puts method is invked, value of the variable greeting is passed in as an argument
+
+=end
+
+=begin
+puts greet has an output of 'Hey!'
+
+prior to this
+on line 8 local variable greet is initialized and points to string object with value 'Hey'
+and on the following line the value of greet is passed in as an argument (as the first argument), along with the value of stirng literal 'Hello' (2nd) to
+the replace method when it is invoked
+
+when it passed into the method and assigned to parameter str and value, a copy of the reference pointing to the objects of greet and 'hello' are
+  passed in repectivly
+when str is reassigned to the value of value borh stri and value point to the same object within the method but outside the method thsi is not
+  reflected because reassigning the copy of a reference does not change the actual referenee; while we can change the object that greet points to 'Hey!' we cannot change
+  where greet points to (that is, to the object that string literal 'Hello' points to)
+  so greet remains pointing to string object with value "HeY!"
+
+
 =end
 
