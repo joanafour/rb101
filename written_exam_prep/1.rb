@@ -1026,7 +1026,7 @@ when it passed into the method and assigned to parameter str and value, a copy o
 when str is reassigned to the value of value borh stri and value point to the same object within the method but outside the method thsi is not
   reflected because reassigning the copy of a reference does not change the actual referenee; while we can change the object that greet points to 'Hey!' we cannot change
   where greet points to (that is, to the object that string literal 'Hello' points to)
-  so greet remains pointing to string object with value "HeY!"
+ greet remains pointing to string object with value "HeY!"
 
 
 =end
