@@ -1031,3 +1031,24 @@ when str is reassigned to the value of value borh stri and value point to the sa
 
 =end
 
+def test
+  puts "written assessment"
+end
+
+var = test
+
+if var
+  puts "written assessment"
+else
+  puts "interview"
+end
+
+
+=begin
+
+method test is defined; in the body the puts method is called and the value of string literal "written assessment" is passed in as an argument
+
+outsdie the method local variable var is initialzied and referencces tests 
+
+
+=end
