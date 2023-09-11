@@ -772,6 +772,12 @@ end
 p new_array
 
 =begin
+local variable arr is initialized and references array object with value [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+local variable new_array is initialized and references the return value when arr is passed in as an explicit caller
+to the select method, and the block denoted by do..end is passed into the method
+  this method returns a new_array where each element calls on and is passed to the mathematic operand plus method to reference
+  the object reassigned when one is added to the integer
+  the p methods is called to new_array and outputs and returns [2,3,4,5,6,7,9,10,11]
 =end
 
 
@@ -1048,7 +1054,14 @@ end
 
 method test is defined; in the body the puts method is called and the value of string literal "written assessment" is passed in as an argument
 
-outsdie the method local variable var is initialzied and referencces tests 
+outside the method local variable var is initialzied and is set equal to test, so it references the return value of the test method;
+so it outputs "written assessment" since that is what is output by puts "written assessment" and returns nil
+now it point to nil
 
-
+if/else statement begins two lines over where the first conditional is met, that is if var evaluates to true is met
+  the puts method is called and the value of stirng literal "written assessent" is passed into it as an argument
+else if it does not evaluate to that the puts method is called and the value of stirng literal "interview" is passed into it
+  except for false and nil, every expression evaluates as true, but since nil is returned by var it doesnt' meet the condtions and
+  "interview" is output and again nil is returned
+  This demonstrates the e
 =end
