@@ -80,7 +80,14 @@ to retrieve the value of value with a key hash.feth(:some_symbol) is preffered
 
 how to add an element in the middle of the array
 select returns a new array depending on the criteria specified in the block
-# sele
+
+map a  new array based ond the block's return value. Each element is transformed
+based on the return value.
+
+have prescise definitions
+
+Enumerable is a module that is mixed into arrays and hashes (since you can put it into both,
+as the class must provide a method each, which hash and array both provide)
 =end
 
 

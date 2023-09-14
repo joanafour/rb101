@@ -10,10 +10,10 @@ puts a
 puts b
 
 Local variable a is initialized on line one so that it references/points to an object with class string whose value is  "hello"
-Local variable b is intialized on line two as being equal to a, which means a and b now both point to string object with vlaue "hello" and they are aliases
-(Or we are initalizing local variable to the string object that variable a is pointing to)
+Local variable b is intialized on line two as being equal to a, which means a and b now both point to string object with vlaue "hello" /and they are aliases/
+(Or we are initalizing local variable b so that it pointsto the string object that variable a is pointing to)
 a is then reasigned to a different string object whose value is "goodbye", this means that a and b point to different objects a to
-the string object whose value is "hello" and "b" remains pointing to a string object whose value is goodbye; they are no longer aliases
+the string object whose value is "hello" and "b" remains pointing to a string object whose value is goodbye; /they are no longer aliases/
 since they no longer point to the same object
 
 variables a and b call on the method puts; the puts method will always display the string and return nil so a outputs goodbye and b outputs hello
@@ -41,8 +41,6 @@ Local variable a is initalized on line one so that it references/points to an ob
 We then call the loop method and pass the do..end block to it. A is reassigned to 5 and local variable b is initalized
 
 
-
-
 the break keyword is used to break out of the loop
 
 The variable a initalized in the outerscope (outside of the block) is directly accessible to the inner scope (within the block) and blocks
@@ -52,9 +50,9 @@ variable a calls on method puts where it outputs integer 5 and returns nil
 Since variable b is initalzed in the inner scope it is not accessible to the outerscope. local variable scope is defined by where it is initalized,
 so variable b's scope is limited to within the block and is unavaible to the outer scope
 
-variable b calls on method puts where an error, undefined local varialbe, is thrown up
+variable b calls on method puts where an error, undefined local varialbe or method, is thrown up
 
-demonstrates variable scope
+demonstrates variable scope when a method is invoked with a block
 
 #3
 
@@ -75,42 +73,45 @@ puts a returns nil and an output of integer 3
 local variable a is initalized and points to integer object with value 3
 
 the do end block is passed onto the loop method where local ariable c is initalized and is pointing to integer objec with value 3
-a gets reassigned so that it points to the integer object that c points to the integer object c points to (3)
+a gets reassigned so that it points to has it has the same value as c; now both pointing to the same ojbect
 local variable c is initalized in the inner scope and is unavailable to the outerscope
 the break keyword is used to break out of the loop method
-variable a calls on the puts method
-
-
+the value of variable a calls on the puts method
+3 is output, and nil is returned
 puts b returns nil and an output of 2
+
 local variable b is initialized in the outerscope and points to the integer object with value 2, it is not used elsewhere in the code
 
-demonstrates variable scope and reassignment
-
+demonstrates variable scope and reassignment within a block
 #4
+def example(str)
+  i = 3 
+  loop do   
+    puts str   
+    i -= 1   
+    break if i == 1
+  end
+end
 
-3, 2, 1,
+example('hello')
 
-hello
-hello
-hello
-
-we have the definition example which trakes in one argument.
-
+method example is definied with one paramete
+within the method,
 local variable i is initialized and points to an integer object with value 3, it is going to be used to control the number of executions
 the loop performs.
 
-on the last line we call on the method with the string literal hello
+on the last line we call on the method and the value of string literal 'hello' is passed in as an argument
 
 string literal is passed in as an argument assigned to the paramater str and made available as a local var to the method def
-do...end block is passed into loop method
-on the first iteration the string hello is passed in as an argument to the puts method, outputs string hello
-the substraction assignment variable reassigns  i to 2, next iteration same thing only i is reassigned to 1 and same thing during third
-but this time i is reassigned to 0 and the conditonal requirements are met on the next line so we break out of the loop
+do...end block is passed into loop method as an argument
+puts method is invoked with value of str passed in as an argument, in this case hello is output
+i is uses addition reassignment to be reassignhed to it's value - 1; so now i = 2
+keyword break is usedo n the conditional statement if i == 0
+so there are three iterations when i = 2, 1, & 0, respectively, then the loop is broken out of
 
-so calling the method on the string literal hello will output hello three times and
-returns the last line evaluated result of the last line of the expression,
-so it returns nil WHY
+so the loop runs three times and each time outputs hello
 
+nil is returned as per the break statement since the return value of an if statement alont returns nil 
 
 #5
 def greetings(str)
