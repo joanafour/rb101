@@ -111,7 +111,11 @@ so there are three iterations when i = 2, 1, & 0, respectively, then the loop is
 
 so the loop runs three times and each time outputs hello
 
-nil is returned as per the break statement since the return value of an if statement alont returns nil 
+nil is returned as per the break statement since the return value of an
+if statement alone returns nil
+
+  this demonstrates object passing and invoking the loop method inside the method
+  a counter is used (i) to keep track of the number of iterations that we want the loop to do
 
 #5
 def greetings(str)
