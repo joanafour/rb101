@@ -135,13 +135,14 @@ Good Bye
 and returns nil
 
 local variable word is initialzied in the outerscope and points to string object with value Hello
-the variable is then passed in as angrument to the greeetings method, assigned to the mehtod's parameter str
+the value of variable word is then passed in as arguument to the greeetings method, assigned to the method's parameter str
 and made avaiable to the to the method as a local variable
-puts str output hello
-puts hello outputs hello
+str calls on the puts method and is passed in as an argument
+hello is output
+value of string literal "Goodbye" calls on the puts method and is passed in as an argument
+goodbye is output
 last line evaluated in method is returned, puts always returns nil, nil is returned
 
-method def output?
 
 
 
@@ -161,12 +162,12 @@ end
 puts "Your total is #{sum}"
 
 # Local variable arr is initialized and is pointing to an array object with value [1234]
-Local variables counter and sum are initialized and both point to the same object since every number
-holds a reference to an object that doesn't change/is immutable
+Local variables counter and sum are initialized and both point to number object with value 0;
+since each number in ruby is assigned respectively to one objey they both point to the same object
 
-the loop method is called and a block is caled in using do end
-
-sum uses additon assignment and arr calls setter method, where we reference are able to reference every element in the array that arr points to by index number
+the loop method is called and a block is passed in as an argument as denoted by do end
+*the value of sum is passed into the addtion operator as an argument (as well as the value of numeric 1) and sum is reassined to this new value**
+**sum uses** additon assignment and arr calls setter method, where we reference are able to reference every element in the array that arr points to by index number
 which is representd by counter which is reassigned a number on the following line by using addition assignment counter = conter + 1
 counter is used to access initially index zero up until index up until the last index, index 3
 it then breaks out of the loop since after using a conditional if statement with the is equal to operator

@@ -1,4 +1,3 @@
-alphabet = ("a".."z").to_a
 
 
 
@@ -28,9 +27,25 @@ alphabet = ("a".."z").to_a
 # return/have the value of its position
 
 =begin
+
 ALGORITHM
 
 
 
 
 =end
+
+
+
+def solve(arr)
+counter = 0
+alphabet = ("a".."z").to_a
+alphabet.each do
+  if alphabet == arr.each {|e| e}
+  counter += 1
+end
+end
+counter
+end
+
+p solve(["joana"])
