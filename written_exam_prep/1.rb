@@ -810,7 +810,6 @@ arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 arr.each { |n| puts n }
 
-
 =begin
 local variable arr is initialized and reference array object with value [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -922,7 +921,7 @@ end
 array literal [1,2,3] is passed as an argument to the any? method
 block is passed into the method as an argument with one parameter
 since one of the elements in the array 3 meets the criteria that
-it is greater than true, true is returned
+it is greater than 2, true is returned
 
 =end
 
