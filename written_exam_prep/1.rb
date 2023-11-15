@@ -1039,7 +1039,6 @@ when str is reassigned to the value of value borh stri and value point to the sa
   where greet points to (that is, to the object that string literal 'Hello' points to)
  greet remains pointing to string object with value "HeY!"
 
-
 =end
 
 def test
@@ -1059,7 +1058,7 @@ end
 
 method test is defined; in the body the puts method is called and the value of string literal "written assessment" is passed in as an argument
 
-outside the method local variable var is initialzied and is set equal to test, so it references the return value of the test method;
+outside the method local variable var is initialized and is set equal to test, so it references the return value of the test method;
 so it outputs "written assessment" since that is what is output by puts "written assessment" and returns nil
 now it point to nil
 
