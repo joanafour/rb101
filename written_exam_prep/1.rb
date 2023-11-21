@@ -1010,7 +1010,7 @@ and while a does not equal true but it  evaluates to true in the conditional
 
 
 =begin
-Line 1: local variable greeting is initialized and refeerences string
+Line 1: local variable greeting is initialized and references string
 object with value 'Hello'
 
 line 3: loop method is invoked and a block is passed in as an argument
@@ -1045,7 +1045,7 @@ def test
   puts "written assessment"
 end
 
-var = test
+var = test # why is "Written assessment" initially output, is it because we are setting var equal to test
 
 if var
   puts "written assessment"
@@ -1063,9 +1063,9 @@ so it outputs "written assessment" since that is what is output by puts "written
 now it point to nil
 
 if/else statement begins two lines over where the first conditional is met, that is if var evaluates to true is met
-  the puts method is called and the value of stirng literal "written assessent" is passed into it as an argument
+  the puts method is called and the value of string literal "written assessent" is passed into it as an argument
 else if it does not evaluate to that the puts method is called and the value of stirng literal "interview" is passed into it
-  except for false and nil, every expression evaluates as true, but since nil is returned by var it doesnt' meet the condtions and
+  except for false and nil, every expression evaluates as true, but since nil is returned by var it doesn't meet the condtions and
   "interview" is output and again nil is returned
-  This demonstrates the e
+  This demonstrates ??
 =end
