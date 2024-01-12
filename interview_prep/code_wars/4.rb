@@ -35,17 +35,44 @@ ALGORITHM
 
 =end
 
+=begin
+
+def solve(arr) # arr = ["", "", "", ""]
+
+num = 0
+a = ("a".."z").to_a
+h = a.to_h {|item| [item, num +=1]}
+arr2 = []
+
+arr.each do |element|
+  arr2 << element.chars
+end
+
+# arr2 = [["a", "b", "o", "d", "e"], ["A", "B", "c"], ["x", "y", "z", "D"]]
+  #[[],[],[]]
+
+for element in arr2 # accessing the array in the array
+  element
+ element.each_index do |index| # for each index at each array
+   element[index] = element[index].downcase # each element at each index is downcase
+    if element[index] == h.key(index + 1) # matching
+      element[index].replace("foo")
+    end
+ end
+end
+
+count = 0
+
+arr3 = []
+arr2.each {|array| arr3 << array.count("foo")}
+arr3
 
 
-def solve(arr)
-counter = 0
-alphabet = ("a".."z").to_a
-alphabet.each do
-  if alphabet == arr.each {|e| e}
-  counter += 1
-end
-end
-counter
 end
 
-p solve(["joana"])
+p solve(["abode","ABc","xyzD"])
+p solve(["abide","ABc","xyz"])
+p solve(["IAMDEFANDJKL","thedefgh","xyzDEFghijabc"])
+p solve(["encode","abc","xyzD","ABmD"])
+=end
+ 

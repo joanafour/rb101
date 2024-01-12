@@ -10,7 +10,7 @@ puts a
 puts b
 
 Local variable a is initialized on line one so that it references/points to an object with class string whose value is  "hello"
-Local variable b is intialized on line two as being equal to a, which means a and b now both point to string object with vlaue "hello" /and they are aliases/
+Local variable b is intialized on line two as being equal to a, which means a and b now both point to string object with value "hello" /and they are aliases/
 (Or we are initalizing local variable b so that it pointsto the string object that variable a is pointing to)
 a is then reasigned to a different string object whose value is "goodbye", this means that a and b point to different objects a to
 the string object whose value is "hello" and "b" remains pointing to a string object whose value is goodbye; /they are no longer aliases/
@@ -105,7 +105,7 @@ on the last line we call on the method and the value of string literal 'hello' i
 string literal is passed in as an argument assigned to the paramater str and made available as a local var to the method def
 do...end block is passed into loop method as an argument
 puts method is invoked with value of str passed in as an argument, in this case hello is output
-i is uses addition reassignment to be reassignhed to it's value - 1; so now i = 2
+i is an argument to subtraction reassignment to be reassignhed to it's value - 1; so now i = 2
 keyword break is usedo n the conditional statement if i == 0
 so there are three iterations when i = 2, 1, & 0, respectively, then the loop is broken out of
 
